@@ -57,18 +57,21 @@ fn create_input(team_path: &str, round: u8) {
 
 // logic for randomly generating round 1
 fn create_round_1(team_path: &str) {
-    const MIN_CHARS: usize = 6;
-    const MAX_CHARS: usize = 30;
-    const MAX_LINES: usize = 300;
-    const NUMBER_RATE: f32 = 0.38;
+    const MIN_CHARS: u32 = 6;
+    const MAX_CHARS: u32 = 30;
+    const MAX_LINES: u32 = 6969;
+    const MIN_NUMBER_RATE: f32 = 0.25;
+    const MAX_NUMBER_RATE: f32 = 0.75;
 
     let mut rng = rand::thread_rng();
-
     let mut output = String::new();
+
     for _ in 0..MAX_LINES {
+        let number_rate = rng.gen_range(MIN_NUMBER_RATE..=MAX_NUMBER_RATE);
         let characters = rng.gen_range(MIN_CHARS..=MAX_CHARS);
+
         for _ in 0..characters {
-            if random::<f32>() <= NUMBER_RATE { // Number
+            if random::<f32>() <= number_rate { // Number
                 output += &rng.gen_range(1..10).to_string();
             } else { // CHaracter
                 match rng.gen_range(1..=2) {
