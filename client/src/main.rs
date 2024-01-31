@@ -1,7 +1,9 @@
-use std::fs;
 use std::io;
 
 mod round_1;
+
+#[cfg(test)]
+mod round_tests;
 
 fn main() {
     let team_id = input_u32("Enter team number");

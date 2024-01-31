@@ -8,7 +8,7 @@ pub fn parser(team_id: u32) {
     println!("{answer}")
 }
 
-fn compute(input_string: &str) -> u32 {
+pub fn compute(input_string: &str) -> u32 {
     let mut answer = 0;
     for line in input_string.lines() {
         let digits: Vec<u32> = line.chars().filter_map(|x| x.to_digit(10)).collect::<Vec<u32>>();
