@@ -23,7 +23,7 @@ fn main() {
 
         match choice {
             1 => create_dirs(),
-            2 => create_round_inputs(),
+            2 => create_team_inputs(),
             _ => break,
         }
     }
@@ -39,7 +39,7 @@ fn create_dirs() {
     }
 }
 
-fn create_round_inputs() {
+fn create_team_inputs() {
     for i in 1..=TEAM_COUNT {
         let team_path = format!("./Team_{}", i);
         for round in 1..=ROUND_COUNT {
