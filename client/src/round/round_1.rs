@@ -1,13 +1,3 @@
-use std::fs;
-
-pub fn parser(team_id: u32) {
-    let file_path = format!("Team_{team_id}/round_1.txt");
-    let Ok(input_string) = fs::read_to_string(file_path) else { println!("failed to read file"); return };
-
-    let answer: u32 = compute(&input_string);
-    println!("{answer}")
-}
-
 pub fn compute(input_string: &str) -> u32 {
     let mut answer = 0;
     for line in input_string.lines() {

@@ -1,4 +1,3 @@
-
 #[test]
 fn round_1_test() {
     assert_eq!(super::round_1::compute("1asjkldfalk;jljag;"), 11);

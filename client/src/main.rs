@@ -1,15 +1,11 @@
 use std::io;
-
-mod round_1;
-
-#[cfg(test)]
-mod round_tests;
+mod round;
 
 fn main() {
     let team_id = input_u32("Enter team number");
-    let round = input_u32("Enter round number");
+    let round_id = input_u32("Enter round number");
 
-    get_answer(team_id, round);
+    get_answer(team_id, round_id);
 }
 
 
@@ -26,9 +22,6 @@ fn input_u32(msg: &str) -> u32 {
     })
 }
 
-fn get_answer(team_id: u32, round: u32) {
-    match round {
-        1 => round_1::parser(team_id),
-        _ => (),
-    }
+fn get_answer(team_id: u32, round_id: u32) -> Option<i32> {
+    round::parser(team_id, round_id)
 }
