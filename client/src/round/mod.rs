@@ -14,7 +14,7 @@ pub fn parser(team_id: u32, round: u32) -> Option<i32> {
     let answer = match {round} {
         1 => Some(round_1::compute(&input_string) as i32),
         2 => Some(round_2::compute(&input_string) as i32),
-        3 => Some(round_3::compute(&input_string)),
+        3 => Some(round_3::compute(&input_string) as i32),
         _ => None,
     };
     println!("{answer:?}");
