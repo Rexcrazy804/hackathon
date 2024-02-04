@@ -3,6 +3,7 @@ use std::fs;
 mod round_1;
 mod round_2;
 mod round_3;
+mod round_4;
 
 #[cfg(test)]
 mod round_tests;
@@ -15,6 +16,7 @@ pub fn parser(team_id: u32, round: u32) -> Option<i32> {
         1 => Some(round_1::compute(&input_string) as i32),
         2 => Some(round_2::compute(&input_string) as i32),
         3 => Some(round_3::compute(&input_string) as i32),
+        4 => Some(round_4::compute(&input_string)),
         _ => None,
     };
     println!("{answer:?}");

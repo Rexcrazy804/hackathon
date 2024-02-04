@@ -1,6 +1,7 @@
 use super::round_1;
 use super::round_2;
 use super::round_3;
+use super::round_4;
 
 #[test]
 fn round_1_test() {
@@ -28,4 +29,14 @@ fn round_3_test() {
     // needa think of more tests later
     assert_eq!(round_3::compute("[(191)(823)(167)]\n[(02)(20)]"), (9 + 4));
     assert_eq!(round_3::compute("[(111)(222)(333)]\n[(111)(222)(333)]\n[(2)(3)(4)(5)(6)]"), (6 + 9 + 9));
+}
+
+#[test]
+fn round_4_test() {
+    // X wins
+    assert_eq!(round_4::compute("XXO _XO XXX"), 2);
+    // O wins
+    assert_eq!(round_4::compute("OXO _X_ OOO"), 3);
+    // draw
+    assert_eq!(round_4::compute("OXO XXO OOX"), 4);
 }

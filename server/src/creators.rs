@@ -91,7 +91,7 @@ pub fn create_round_3(team_path: &str) {
 }
 
 pub fn create_round_4(team_path: &str) {
-    const FACTOR: u32 = 4;
+    const FACTOR: u32 = 5;
     const MIN_GAMES: u32 = MIN_LINES/FACTOR;
     const MAX_GAMES: u32 = MAX_LINES/FACTOR;
 
