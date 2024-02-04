@@ -8,7 +8,7 @@ pub(super) fn compute(input_string: &str) -> u32 {
     let mut super_sum = 0;
 
     for (line_number, line) in input_string.lines().enumerate() {
-        println!("no: {line_number}, line:{line}");
+        // println!("no: {line_number}, line:{line}");
         let line = line.trim_matches(|c| c=='[' || c==']');
         let mut matrix: Vec<Vec<u32>> = Vec::new();
 
@@ -22,7 +22,7 @@ pub(super) fn compute(input_string: &str) -> u32 {
 
             for (i, row) in matrix.clone().iter().enumerate() {
                 for (j, _) in row.iter().enumerate() {
-                    new_matrix[i][j] = matrix[j][i];
+                    new_matrix[j][i] = matrix[i][j];
                 }
             }
             matrix = new_matrix
@@ -30,7 +30,7 @@ pub(super) fn compute(input_string: &str) -> u32 {
 
         for row in matrix {
             max.push(*row.iter().max().unwrap());
-            println!("{}", max.last().unwrap());
+            // println!("{}", max.last().unwrap());
         }
         let product = max.iter().product::<u32>();
         super_sum += sum_of_digits(product);
