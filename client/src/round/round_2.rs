@@ -3,6 +3,10 @@
 * iterate over each line for each line find the sequence that has more than 1 member that is in the
 * ansending order. then find the sum of the digits in the said sequence do this for each line
 * return the grand sum
+*
+* edge cases:
+* ensure sequences that are at the tail of the line are evaluated
+* ensure that you completely ignore sequences less than the length of 1
 */
 
 use std::cmp::Ordering;
