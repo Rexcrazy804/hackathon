@@ -5,7 +5,10 @@ fn main() {
     let team_id = input_u32("Enter team number");
     let round_id = input_u32("Enter round number");
 
-    get_answer(team_id, round_id);
+    match get_answer(team_id, round_id) {
+        Some(answer) => println!("answer is :{}", answer),
+        None => println!("Failed to retrieve answer"),
+    }
 }
 
 
