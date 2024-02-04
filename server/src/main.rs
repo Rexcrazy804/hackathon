@@ -6,7 +6,7 @@ use std::fs;
 use std::io;
 
 const TEAM_COUNT: u8 = 2;
-const ROUND_COUNT: u8 = 3;
+const ROUND_COUNT: u8 = 4;
 
 mod creators;
 use creators::*;
@@ -50,8 +50,7 @@ fn create_input(team_path: &str, round: u8) {
         1 => create_round_1(team_path),
         2 => create_round_2(team_path),
         3 => create_round_3(team_path),
+        4 => create_round_4(team_path),
         _ => println!("Invalid round")
     }
 }
-
-

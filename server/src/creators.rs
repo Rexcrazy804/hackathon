@@ -89,3 +89,69 @@ pub fn create_round_3(team_path: &str) {
     }
     writer(team_path, output, 3);
 }
+
+pub fn create_round_4(team_path: &str) {
+    const FACTOR: u32 = 4;
+    const MIN_GAMES: u32 = MIN_LINES/FACTOR;
+    const MAX_GAMES: u32 = MAX_LINES/FACTOR;
+
+    let mut rng = rand::thread_rng();
+    let mut output = String::new();
+
+    let games = rng.gen_range(MIN_GAMES..=MAX_GAMES);
+
+    for _ in 0..games {
+        let mut table = vec!['_'; 9];
+        let mut positions = vec![0, 1, 2, 3, 4, 5, 6, 7, 8];
+        let mut stroke = random::<bool>();
+
+        let mut get_stroke = || {
+            stroke = !stroke;
+            if stroke {
+                'X'
+            } else {
+                'O'
+            }
+        };
+
+        while !positions.is_empty() && !won(&table) {
+            let index = rng.gen_range(0..positions.len());
+            table[positions[index]] = get_stroke();
+            positions.remove(index);
+        }
+
+        output += &table.chunks(3).map(|row| row.iter().collect::<String>()).fold(String::new(), |acc, x| acc + " " + &x);
+        output += "\n";
+    }
+
+    writer(team_path, output, 4);
+}
+
+fn won(table: &[char]) -> bool {
+    // rowks
+    if table.chunks(3).filter(|row| {
+        let (x, y, z) = (row[0], row[1], row[2]);
+        x != '_' && x == y && x == z
+    }).count() > 0 {
+        return true;
+    }
+
+    //columns
+    if (0..3).filter(|&index|
+        table[index] != '_' && table[index] == table[index+3] && table[index] == table[index+6]
+    ).count() > 0 {
+        return true;
+    }
+
+    // Diagonal left
+    if table[0] != '_' && table[0] == table[4] && table[0] == table[8] {
+        return true;
+    }
+
+    // Diagonal Right
+    if table[2] != '_' && table[2] == table[4] && table[2] == table[6] {
+        return true;
+    }
+
+    false
+}
