@@ -63,3 +63,29 @@ pub fn create_round_2(team_path: &str) {
 
     writer(team_path, output, 2);
 }
+
+pub fn create_round_3(team_path: &str) {
+    // number of rows / columns of the generated matrix
+    const MIN_INDEX: u32 = 2;
+    const MAX_INDEX: u32 = 5;
+    
+    let mut rng = rand::thread_rng();
+    let mut output = String::new();
+
+    let lines = rng.gen_range(MIN_LINES..=MAX_LINES);
+    for _ in 0..lines {
+        let rows = rng.gen_range(MIN_INDEX..=MAX_INDEX);
+        let columns = rng.gen_range(MIN_INDEX..=MAX_INDEX);
+
+        output += "[";
+        for _ in 0..rows {
+            output += "(";
+            for _ in 0..columns {
+                output += &rng.gen_range(0..10).to_string();
+            }
+            output += ")";
+        }
+        output +="]\n";
+    }
+    writer(team_path, output, 3);
+}
