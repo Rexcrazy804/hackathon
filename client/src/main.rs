@@ -20,7 +20,7 @@ fn input_u32(msg: &str) -> u32 {
         .expect("Failed to read line");
 
     input.trim().parse().unwrap_or_else(|_| {
-        println!("Failed to read team number, try again");
+        println!("I'd suggest entering a valid number, try again");
         input_u32(msg)
     })
 }

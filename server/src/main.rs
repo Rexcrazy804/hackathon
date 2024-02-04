@@ -12,19 +12,17 @@ mod creators;
 use creators::*;
 
 fn main() {
-    loop {
-        let mut input = String::new();
-        println!("Enter choice");
-        io::stdin().read_line(&mut input)
-            .expect("Failed To read input");
+    let mut input = String::new();
+    println!("Enter choice");
+    io::stdin().read_line(&mut input)
+        .expect("Failed To read input");
 
-        let choice = input.trim().parse::<usize>().unwrap();
+    let choice = input.trim().parse::<usize>().unwrap();
 
-        match choice {
-            1 => create_dirs(),
-            2 => create_team_inputs(),
-            _ => break,
-        }
+    match choice {
+        1 => create_dirs(),
+        2 => create_team_inputs(),
+        _ => (),
     }
 }
 
