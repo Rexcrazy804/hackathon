@@ -14,6 +14,7 @@ pub(super) fn compute(input_string: &str) -> i32 {
 
             if chr == ')' {
                 matrix.push(rows.clone());
+                rows.clear();
             } else {
                 rows.push(chr.to_digit(10).unwrap())
             }

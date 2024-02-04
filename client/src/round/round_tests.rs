@@ -1,5 +1,6 @@
 use super::round_1;
 use super::round_2;
+use super::round_3;
 
 #[test]
 fn round_1_test() {
@@ -19,4 +20,9 @@ fn round_2_test() {
     assert_eq!(round_2::compute("987654321"), 0);
     // esnure sequneces at the tail are parsed
     assert_eq!(round_2::compute("99999999999"), (9+9+9+9+9+9+9+9+9+9+9));
+}
+
+#[test]
+fn round_3_test() {
+    assert_eq!(round_3::compute("[(191)(823)(167)(89)]"), (1+6+7+8+9));
 }
