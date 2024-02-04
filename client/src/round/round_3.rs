@@ -20,8 +20,9 @@ pub(super) fn compute(input_string: &str) -> u32 {
             // transpose
             let mut new_matrix: Vec<Vec<u32>> = vec![vec![0 ; matrix.len()]; matrix[0].len()];
 
-            for (i, row) in matrix.clone().iter().enumerate() {
-                for (j, _) in row.iter().enumerate() {
+            for i in 0..matrix.len() {
+                #[allow(clippy::needless_range_loop)]
+                for j in 0..matrix[0].len() {
                     new_matrix[j][i] = matrix[i][j];
                 }
             }

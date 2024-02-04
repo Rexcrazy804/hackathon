@@ -24,7 +24,8 @@ fn round_2_test() {
 
 #[test]
 fn round_3_test() {
+    // uhh I can't even think of edgecases here :')
+    // needa think of more tests later
     assert_eq!(round_3::compute("[(191)(823)(167)]\n[(02)(20)]"), (9 + 4));
     assert_eq!(round_3::compute("[(111)(222)(333)]\n[(111)(222)(333)]\n[(2)(3)(4)(5)(6)]"), (6 + 9 + 9));
-    // assert_eq!(round_3::compute("[(111)(222)(333)]\n[(111),(111),(1111)]\n[(2),(3),(4),(5),(6)]"), (9 + 4));
 }
