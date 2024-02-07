@@ -4,7 +4,7 @@
 * return their sum
 */
 
-pub(super) fn compute(input_string: &str) -> i32 {
+pub(super) fn compute(input_string: &str) -> u32 {
     let (mut win_x, mut win_o, mut draw) = (1, 1, 1);
 
     for line in input_string.lines() {
