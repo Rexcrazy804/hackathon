@@ -176,7 +176,10 @@ pub fn create_round_5(team_path: &str) {
             .map(|x| x.to_owned())
             .collect();
 
-        output += &nums.iter().map(u32::to_string).fold(String::new(), |acc, num| acc + &num + " ");
+        let line = nums.iter().map(u32::to_string).fold(String::new(), |acc, num| acc + &num + " ");
+        let line = line.trim();
+
+        output += line;
         output += "\n";
     }
 
