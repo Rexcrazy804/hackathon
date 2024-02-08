@@ -1,5 +1,6 @@
+use rand::seq::SliceRandom;
 // logic for randomly generating round 1
-use rand::{Rng, random};
+use rand::{self, Rng, random};
 use std::fs::File;
 use std::io::Write;
 
@@ -154,4 +155,30 @@ fn won(table: &[char]) -> bool {
     }
 
     false
+}
+
+pub fn create_round_5(team_path: &str) {
+    const FACTOR: u32 = 5;
+    const MIN_NODE_COUNT: usize = 7;
+    const MAX_NODE_COUNT: usize = 15;
+    const RANGE_UPPER_LIMIT: u32 = 100;
+
+    let mut rng = rand::thread_rng();
+    let mut output = String::new();
+
+    let lines = rng.gen_range((MIN_LINES/FACTOR)..=(MAX_LINES/FACTOR));
+    for _ in 0..lines {
+        let node_count = rng.gen_range(MIN_NODE_COUNT..=MAX_NODE_COUNT);
+        let nums = (0..RANGE_UPPER_LIMIT).collect::<Vec<u32>>();
+
+        let nums: Vec<u32> = nums
+            .choose_multiple(&mut rand::thread_rng(), node_count)
+            .map(|x| x.to_owned())
+            .collect();
+
+        output += &nums.iter().map(u32::to_string).fold(String::new(), |acc, num| acc + &num + " ");
+        output += "\n";
+    }
+
+    writer(team_path, output, 5);
 }
