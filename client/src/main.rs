@@ -1,5 +1,6 @@
 use std::{cmp, io};
 mod round;
+pub mod crypt;
 
 fn main() {
     let team_id = input_u32("Enter team number");
