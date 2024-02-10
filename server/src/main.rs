@@ -3,7 +3,9 @@
 // list of questions
 
 use std::fs;
-use std::io;
+use std::fs::File;
+use std::io::{self, Write};
+use crypt::encoder;
 
 const TEAM_COUNT: u8 = 2;
 const ROUND_COUNT: u8 = 5;
@@ -42,6 +44,7 @@ fn create_team_inputs() {
         for round in 1..=ROUND_COUNT {
             create_input(&team_path, round);
         }
+        reset_round_tries(&team_path);
     }
 }
 
@@ -54,4 +57,19 @@ fn create_input(team_path: &str, round: u8) {
         5 => create_round_5(team_path),
         _ => println!("Invalid round")
     }
+}
+
+fn reset_round_tries(team_path: &str) {
+    println!("Creating log for {team_path}");
+    let mut file = File::create(format!("{team_path}/round.log"))
+        .expect("Failed to create log File");
+
+    let mut initial_string = String::new();
+    for _ in 1..=ROUND_COUNT {
+        initial_string += "9_";
+    }
+
+    let encoded_string = encoder(initial_string.trim_end_matches('_'));
+    file.write_all(encoded_string.as_bytes())
+        .expect("Failed to write into log file");
 }
