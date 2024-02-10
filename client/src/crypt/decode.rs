@@ -12,12 +12,10 @@ pub fn decode_2(input: &str) -> String {
     for str in input.split(' ') {
         let str_rev = str.chars()
             .rev()
-            .map(|ch| {
-                let num = ch.to_digit(10).unwrap() + 1;
-                num.to_string()
-            })
             .collect::<String>();
-        output += &str_rev;
+        let num = str_rev.parse::<u32>().unwrap() + 1;
+
+        output += &num.to_string();
         output += " ";
 
     }

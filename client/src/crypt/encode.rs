@@ -11,14 +11,11 @@ pub fn encode_1(input: &str) -> String {
 pub fn encode_2(input: &str) -> String {
     let mut output = String::new();
     for str in input.split(' ') {
-        let str_rev = str.chars()
+        let num = str.parse::<u32>().unwrap() - 1;
+        let num_str_rev = num.to_string().chars()
             .rev()
-            .map(|ch| {
-                let num = ch.to_digit(10).unwrap() - 1;
-                num.to_string()
-            })
             .collect::<String>();
-        output += &str_rev;
+        output += &num_str_rev;
         output += " ";
 
     }
