@@ -1,5 +1,8 @@
 use std::{cmp, io};
+use colored::Colorize;
+
 mod round;
+mod turn_handler;
 
 fn main() {
     let team_id = input_u32("Enter team number");
@@ -8,24 +11,34 @@ fn main() {
     let client_answer = get_answer(team_id, round_id)
         .expect("Client failed to evaluate answer");
 
-    loop {
+    let mut turns = turn_handler::get_turns(team_id, round_id);
+
+    println!("type 0 to exit");
+    while turns > 0 {
         let team_answer = input_u32("Enter your answer");
+        if team_answer == 0 { break }
+
+        turns -= 1;
         match client_answer.cmp(&team_answer) {
             cmp::Ordering::Greater | cmp::Ordering::Less => {
-                println!("Your answer is incorrect");
-                println!("Please try again\n");
+                println!("Your answer is {}\n", "incorrect".bright_red());
             },
             cmp::Ordering::Equal => {
-                println!("your answer is CORRECT!!!");
+                println!("your answer is {}", "CORRECT!!!".bright_green());
                 break;
             },
         }
     }
 
+    if turns == 0 {
+        println!("You have run out of Turns!");
+    }
+
+    turn_handler::update_turns(team_id, round_id, turns);
+
     println!("Hit Enter to continue...");
     let _ = io::stdin().read_line(&mut String::new());
 }
-
 
 fn input_u32(msg: &str) -> u32 {
     let mut input = String::new();
