@@ -185,3 +185,24 @@ pub fn create_round_5(team_path: &str) {
 
     writer(team_path, output, 5);
 }
+
+pub fn create_round_6(team_path: &str) {
+    let mut output = String::new();
+    for number in 0..6_000_000_u32 {
+        if is_armstrong(number) {
+            output += &(number.to_string() + "\n")
+        }
+    }
+
+    writer(team_path, output, 6);
+}
+
+fn is_armstrong(number: u32) -> bool {
+    let digits = number.to_string()
+        .chars()
+        .map(|digit| digit.to_digit(10).unwrap())
+        .collect::<Vec<u32>>();
+    let digits_exponent = digits.len() as u32;
+
+    number == digits.iter().map(|x| x.pow(digits_exponent)).sum()
+}
