@@ -19,10 +19,13 @@ pub(super) fn compute(input_string: &str) -> u32 {
 
 fn is_armstrong(number: u32) -> bool {
     let digits = number.to_string()
-        .split_whitespace()
-        .map(|digit| digit.parse::<u32>().unwrap())
+        .chars()
+        .map(|digit| digit.to_digit(10).unwrap())
         .collect::<Vec<u32>>();
+
     let digits_exponent = digits.len() as u32;
 
-    number == digits.iter().map(|x| x.pow(digits_exponent)).sum()
+    number == digits.iter()
+        .map(|x| x.pow(digits_exponent))
+        .sum()
 }
