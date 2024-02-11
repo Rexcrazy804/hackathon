@@ -30,7 +30,7 @@ fn main() {
 
 fn create_dirs() {
     for i in 1..=TEAM_COUNT {
-        let team_path = format!("./Team_{}", i);
+        let team_path = format!("./Team_{i}");
         match fs::create_dir(team_path) {
             Ok(_) => (),
             Err(_) => println!("Failed to create dir") 
@@ -40,7 +40,7 @@ fn create_dirs() {
 
 fn create_team_inputs() {
     for i in 1..=TEAM_COUNT {
-        let team_path = format!("./Team_{}", i);
+        let team_path = format!("./Team_{i}");
         for round in 1..=ROUND_COUNT {
             create_input(&team_path, round);
         }

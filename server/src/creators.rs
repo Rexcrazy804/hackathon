@@ -39,7 +39,7 @@ pub fn create_round_1(team_path: &str) {
 }
 
 fn writer(team_path: &str, output: String, round_num: u8) {
-    let mut round_file = File::create(format!("{}/round_{round_num}.txt", team_path))
+    let mut round_file = File::create(format!("{team_path}/round_{round_num}.txt"))
         .expect("Failed to create file");
 
     round_file.write_all(output.as_bytes())
