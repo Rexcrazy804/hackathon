@@ -1,19 +1,31 @@
-const ARMSTRONG_NUMBERS: u32 = 0;
+// ARMSTRONG??!!
+/*
+* In this round we ask the participants to generate a list of armstrong numbers from zero to 4
+* million, the participants are then to identify how to place the file in their respective
+* directory and execute the client to validate the result and enter the number of armstrong numbers
+* in the given range
+*/
 
-pub(super) fn compute(input_string: &str) -> u32 {
+use crate::Colorize;
+const ARMSTRONG_NUMBERS: u32 = 23;
+
+pub(super) fn compute(input_string: &str) -> Option<u32> {
     let mut armstrong_count = 0;
-    for line in input_string.lines() {
-        let number = line.parse::<u32>().unwrap();
-        if is_armstrong(number) {
-            armstrong_count += 1;
-        } else {
+    for (index, line) in input_string.lines().enumerate() {
+        let number = line.parse::<u32>()
+            .unwrap_or_else(|_| {
+                println!("Line {index} is {} \nLineContent: {}", "NOT A NUMBER".bright_red(), line.bright_red());
+                11
+            });
+        if !is_armstrong(number) {
             println!("{number} is Not An Armstrong Number");
         }
+        armstrong_count += 1;
     }
     if ARMSTRONG_NUMBERS == armstrong_count {
-        1
+        Some(armstrong_count)
     } else {
-        696_969_669
+        None
     }
 }
 

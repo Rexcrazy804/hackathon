@@ -1,3 +1,4 @@
+use core::panic;
 use std::{cmp, io};
 use colored::Colorize;
 
@@ -8,8 +9,16 @@ fn main() {
     let team_id = input_u32("Enter team number");
     let round_id = input_u32("Enter round number");
 
-    let client_answer = get_answer(team_id, round_id)
-        .expect("Client failed to evaluate answer");
+    let client_answer = match get_answer(team_id, round_id) {
+        Some(x) => x,
+        None => {
+            println!("The provided input file for round_6 is incomplete/invalid");
+            println!("Program needs to exit, hit enter to continue");
+            let _ = io::stdin().read_line(&mut String::new());
+            panic!()
+        }
+    };
+
 
     let mut turns = turn_handler::get_turns(team_id, round_id);
 
