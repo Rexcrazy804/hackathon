@@ -41,8 +41,16 @@ fn round_4_test() {
 #[test]
 #[allow(clippy::identity_op)]
 fn round_5_test() {
-    assert_eq!(round_5::compute("9 5 4 1 8 3 6 7 0 2"),
-        (0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9).to_string()
-            .chars().map(|x| x.to_digit(10).unwrap()).product()
+    // please write more tests for this round
+    assert_eq!(
+        round_5::compute("9 5 4 1 8 3 6 7 0 2"),
+        digit_product(0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)
     );
+}
+
+fn digit_product(num: u32) -> u32 {
+    num.to_string()
+        .chars()
+        .map(|x| x.to_digit(10).unwrap())
+        .product()
 }
