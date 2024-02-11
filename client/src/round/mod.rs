@@ -6,6 +6,7 @@ mod round_2;
 mod round_3;
 mod round_4;
 mod round_5;
+mod round_6;
 
 #[cfg(test)]
 mod round_tests;
@@ -26,6 +27,7 @@ pub fn parser(team_id: u32, round: u32) -> Option<u32> {
         3 => Some(round_3::compute(&input_string)),
         4 => Some(round_4::compute(&input_string)),
         5 => Some(round_5::compute(&input_string)),
+        6 => Some(round_6::compute(&input_string)),
         _ => None,
     };
 
