@@ -1,5 +1,4 @@
 use rand::seq::SliceRandom;
-// logic for randomly generating round 1
 use rand::{self, Rng, random};
 use std::fs::File;
 use std::io::Write;
@@ -160,7 +159,7 @@ fn won(table: &[char]) -> bool {
 pub fn create_round_5(team_path: &str) {
     const FACTOR: u32 = 5;
     const MIN_NODE_COUNT: usize = 7;
-    const MAX_NODE_COUNT: usize = 15;
+    const MAX_NODE_COUNT: usize = 30;
     const RANGE_UPPER_LIMIT: u32 = 100;
 
     let mut rng = rand::thread_rng();
