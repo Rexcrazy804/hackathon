@@ -1,7 +1,4 @@
-use super::round_1;
-use super::round_2;
-use super::round_3;
-use super::round_4;
+use super::*;
 
 #[test]
 fn round_1_test() {
@@ -39,4 +36,13 @@ fn round_4_test() {
     assert_eq!(round_4::compute("OXO _X_ OOO"), 3);
     // draw
     assert_eq!(round_4::compute("OXO XXO OOX"), 4);
+}
+
+#[test]
+#[allow(clippy::identity_op)]
+fn round_5_test() {
+    assert_eq!(round_5::compute("9 5 4 1 8 3 6 7 0 2"),
+        (0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9).to_string()
+            .chars().map(|x| x.to_digit(10).unwrap()).product()
+    );
 }

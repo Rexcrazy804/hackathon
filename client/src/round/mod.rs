@@ -35,7 +35,7 @@ pub fn parser(team_id: u32, round: u32) -> Option<u32> {
     let env_vars: Vec<String> = std::env::args().collect();
 
     if let Some(arg) = env_vars.last() {
-        if arg == "answer" {
+        if arg == "RexielScarletistheanswer" {
             println!("Answer: {}", answer.unwrap_or(0));
         }
     }

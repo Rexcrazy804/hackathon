@@ -58,7 +58,7 @@ fn create_input(team_path: &str, round: u8) {
         3 => create_round_3(team_path),
         4 => create_round_4(team_path),
         5 => create_round_5(team_path),
-        6 => if write_six == "write6" { create_round_6(team_path) },
+        6 => if write_six == "write6" && team_path == "./Team_1" { create_round_6(team_path) },
         _ => println!("Invalid round")
     }
 }
