@@ -1,7 +1,7 @@
 // TIC TAC TOE
 /*
 * Parse through the inputs containing several tic tac toe games
-* return their sum
+* return their sum victory for x = 1, victory for o = 2, draw = +3
 */
 
 pub(super) fn compute(input_string: &str) -> u32 {
