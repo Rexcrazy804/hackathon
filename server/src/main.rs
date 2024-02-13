@@ -7,7 +7,7 @@ use std::fs::File;
 use std::io::{self, Write};
 use crypt::encoder;
 
-const TEAM_COUNT: u8 = 2;
+const TEAM_COUNT: u8 = 5;
 const ROUND_COUNT: u8 = 6;
 
 mod creators;
