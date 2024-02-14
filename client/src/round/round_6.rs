@@ -7,7 +7,7 @@
 */
 
 use crate::Colorize;
-const ARMSTRONG_NUMBERS: u32 = 23;
+const ARMSTRONG_NUMBERS: u32 = 25;
 
 pub(super) fn compute(input_string: &str) -> Option<u32> {
     let mut armstrong_count = 0;
