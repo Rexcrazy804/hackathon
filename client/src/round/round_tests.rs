@@ -13,7 +13,9 @@ fn round_1_test() {
 #[test]
 fn round_2_test() {
     assert_eq!(round_2::compute("19182316789"), (1+6+7+8+9));
+    // Multiple greatest sequences
     assert_eq!(round_2::compute("1212"), (1+2+1+2)); 
+    assert_eq!(round_2::compute("1231934519789"), (1+2+3 + 3+4+5 + 7+8+9)); 
     // ignore sequences with singular members
     assert_eq!(round_2::compute("987654321"), 0);
     // esnure sequneces at the tail are parsed
@@ -36,6 +38,10 @@ fn round_4_test() {
     assert_eq!(round_4::compute("OXO _X_ OOO"), 3);
     // draw
     assert_eq!(round_4::compute("OXO XXO OOX"), 4);
+
+    // combined
+    assert_eq!(round_4::compute("XXO _XO XXX\nOXO XXO OOX\nOXO _X_ OOO"), 2 * 3 * 4);
+
 }
 
 #[test]

@@ -120,7 +120,7 @@ pub fn create_round_4(team_path: &str) {
             positions.remove(index);
         }
 
-        output += &table.chunks(3).map(|row| row.iter().collect::<String>()).fold(String::new(), |acc, x| acc + " " + &x);
+        output += (table.chunks(3).map(|row| row.iter().collect::<String>()).fold(String::new(), |acc, x| acc + " " + &x)).trim();
         output += "\n";
     }
 
